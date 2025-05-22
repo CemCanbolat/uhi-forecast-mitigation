@@ -1,0 +1,13 @@
+earthengine-api
+google-auth
+dotenv
+rasterio
+numpy
+opencv-python
+shapely
+geopandas
+pyproj
+google-cloud-storage
+tensorflow
+fastapi
+uvicorn
