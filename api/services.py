@@ -10,9 +10,28 @@ from api.exceptions import (
     StorageConnectionError,
 )
 
+CITY_NAME_MAP = {
+    "istanbul":"Istanbul, Turkey",
+    "london"  :  "London, UK",
+    "rotterdam":"Rotterdam, Netherlands"
+}
+
+
+def preprocess_city_data(data):
+    for uhi in data["uhizones"]:
+        del uhi["mitigation_values"]
+        del uhi["full_geometry"]
+
+    return data
+
 def get_latest_uhi_data(city_name: str) -> dict:
     BUCKET_NAME = Config.GCS_BUCKET
     GCS_CREDS = Config.GCS_CREDENTIALS
+    city_id = city_name
+    try:
+        city_name = CITY_NAME_MAP[city_name]
+    except Exception as e:
+        raise InvalidCityError(f"Invalid city name: {city_name}")
 
     try:
         storage_client = storage.Client.from_service_account_json(GCS_CREDS)
@@ -53,6 +72,7 @@ def get_latest_uhi_data(city_name: str) -> dict:
     try:
         json_bytes = latest_blob.download_as_bytes()
         data = json.loads(json_bytes.decode("utf-8"))
+        processed_data = preprocess_city_data(data)
     except Exception as e:
         raise DataFormatError(f"Failed to decode JSON for {latest_blob.name}: {e}")
 
@@ -60,7 +80,8 @@ def get_latest_uhi_data(city_name: str) -> dict:
     # e.g. data = preprocess(data)
 
     return {
-        "city": city_name,
+        "id"  : city_id,
+        "name": city_id.capitalize(),
         "date": latest_date.strftime('%Y-%m-%d'),
-        "data": data
+        "data": processed_data
     }
