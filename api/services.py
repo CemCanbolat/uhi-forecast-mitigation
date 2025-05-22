@@ -2,8 +2,8 @@ from google.cloud import storage
 from datetime import datetime
 import json
 from core.utils import sanitize  
-from api.config import Config
-from api.exceptions import (
+from config import Config
+from exceptions import (
     DataNotFoundError,
     InvalidCityError,
     DataFormatError,

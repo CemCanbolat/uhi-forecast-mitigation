@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from api.services import get_latest_uhi_data
+from services import get_latest_uhi_data
 
 router = APIRouter()
 

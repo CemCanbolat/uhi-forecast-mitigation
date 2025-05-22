@@ -1,15 +1,17 @@
 from dotenv import load_dotenv
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
-
-env_path = Path(__file__).parent.parent / ".env"
+env_path = Path(__file__).parent / ".env"
+if not env_path.exists():
+    env_path = Path("/app/.env")
 load_dotenv(dotenv_path=env_path)
 
 from fastapi import FastAPI, Request
-from api.routes import router
+from routes import router
 from fastapi.responses import JSONResponse
-from api.exceptions import (
+from exceptions import (
     DataNotFoundError,
     InvalidCityError,
     DataFormatError,
@@ -21,6 +23,8 @@ app = FastAPI(title="UHI Forecast API")
 """
 uvicorn api.main:app --reload --port 8001
 """
+
+origins = os.getenv("CORS_ORIGINS", "")
 
 app.add_middleware(
     CORSMiddleware,

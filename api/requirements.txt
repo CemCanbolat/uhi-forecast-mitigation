@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-dotenv
+google-auth
+google-cloud-storage
+numpy
+shapely
+geopandas
+pyproj
