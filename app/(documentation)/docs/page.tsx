@@ -23,7 +23,7 @@ export default function DocsHomePage() {
         <iframe
           className="w-full rounded-xl"
           height="500"
-          src="https://www.youtube.com/embed/Hz2F_S3Tl0Y?si=ITg_LWcUPzQeMkhq"
+          src="https://www.youtube.com/embed/_btkrR04_h4?si=1dVR4qrOH7fuRB1e"
           title="Project Overview"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

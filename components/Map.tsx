@@ -8,7 +8,7 @@ import { heatmapLayer, pointLayer } from '../data/mapLayers';
 import cities from '../data/cities';
 
 // Types
-interface MitigationAction {
+interface MitigationSuggestion {
   icon: string;
   action: string;
   impact: string;
@@ -21,7 +21,7 @@ interface HeatIslandFeature {
   };
   properties: {
     id: string;
-    mitigationActions: MitigationAction[];
+    mitigation_suggestions: MitigationSuggestion[];
   };
 }
 
@@ -62,7 +62,7 @@ interface PopupInfo {
   longitude: number;
   latitude: number;
   id: string;
-  mitigationActions: MitigationAction[];
+  mitigation_suggestions: MitigationSuggestion[];
 }
 
 /**
@@ -138,9 +138,9 @@ export default function UHIMap({
     if (viewState.zoom < MIN_POPUP_ZOOM) return;
 
     const [longitude, latitude] = feature.geometry.coordinates;
-    const { id, mitigationActions } = feature.properties;
+    const { id, mitigation_suggestions } = feature.properties;
 
-    setPopupInfo({ longitude, latitude, id, mitigationActions });
+    setPopupInfo({ longitude, latitude, id, mitigation_suggestions });
   };
 
   // Handle map click events
@@ -255,7 +255,7 @@ export default function UHIMap({
           <h3 className="text-xs sm:text-sm md:text-lg font-bold mb-1 sm:mb-2 md:mb-3 text-black border-b pb-1 md:pb-2">{popupInfo.id}</h3>
           <h4 className="text-[10px] sm:text-xs md:text-sm font-semibold mb-1 sm:mb-2 md:mb-3 text-black">Mitigation Actions:</h4>
           <ul className="space-y-1 sm:space-y-2 md:space-y-3">
-            {popupInfo.mitigationActions.map((action, index) => (
+            {popupInfo.mitigation_suggestions.map((action: MitigationSuggestion, index: number) => (
               <li key={index} className="flex items-start bg-gray-50 p-1 sm:p-1.5 md:p-2 rounded-md">
                 <span className="text-lg sm:text-xl md:text-2xl mr-1 sm:mr-2 md:mr-3">{action.icon}</span>
                 <div>
@@ -293,6 +293,24 @@ export default function UHIMap({
     );
   }
 
+  const NoDataOverlay = () => {
+    if (!heatIslandData || heatIslandData.features?.length > 0) return null;
+    
+    return (
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div className="bg-gray-900/80 rounded-lg p-4 backdrop-blur-sm max-w-md mx-4">
+          <div className="text-blue-400 mb-3 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="text-white text-center text-sm mb-1">No heat islands detected</div>
+          <div className="text-gray-400 text-xs text-center">There are no urban heat islands predicted for {selectedCity.name} on this date.</div>
+        </div>
+      </div>
+    );
+  };
+
   // Loading state
   if (!heatIslandData) {
     return (
@@ -306,6 +324,7 @@ export default function UHIMap({
   return (
     <div className="w-full h-[65vh] sm:h-[60vh] md:h-[70vh] rounded-lg overflow-hidden shadow-lg relative">
       <ZoomIndicator />
+      <NoDataOverlay />
       <Map
         {...viewState}
         onMove={handleViewStateChange}

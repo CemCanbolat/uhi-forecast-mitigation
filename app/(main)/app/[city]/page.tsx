@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export const revalidate = 3; // 1 hour
+export const revalidate = 300; // 5m
 
 export default async function CityPage({ params }: { params: Promise<{ city: string }> }) {
   const cityParams = await params;
@@ -25,6 +25,13 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   try {
     const cityData = await getCityData(cityId);
 
+    // Validate the response structure
+    if (!cityData || typeof cityData !== 'object') {
+      throw new Error('Invalid response format from API');
+    }
+
+    // Even if uhizones/features is empty, we still render the component
+    // The Map component will handle the empty state display
     return (
       <div className="bg-gray-900 flex flex-col h-full w-full">
         <main className="flex-1 flex items-center justify-center px-3 sm:px-6 lg:px-8 py-4 sm:py-3">
@@ -39,6 +46,20 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     );
   } catch (error) {
     console.error(`Error fetching data for city ${cityId}:`, error);
-    throw error;
+    
+    // Return a user-friendly error page instead of throwing
+    return (
+      <div className="bg-gray-900 flex flex-col h-full w-full">
+        <main className="flex-1 flex items-center justify-center px-3 sm:px-6 lg:px-8 py-4 sm:py-3">
+          <div className="w-full max-w-8xl bg-gray-800 rounded-lg p-6 text-center">
+            <h2 className="text-xl text-white mb-4">Unable to load data</h2>
+            <p className="text-gray-400 mb-4">We couldn't load the forecast data for this city. Please try again later.</p>
+            <a href="/" className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              Return to Home
+            </a>
+          </div>
+        </main>
+      </div>
+    );
   }
 }
