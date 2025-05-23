@@ -27,16 +27,16 @@ const cities: CityInfo[] = [
     zoom: 10,
     minZoom: 8
   }
-  // ,
-  // {
-  //   id: 'rotterdam',
-  //   name: 'Rotterdam',
-  //   country: 'Netherlands',
-  //   longitude: 4.47917,
-  //   latitude: 51.9225,
-  //   zoom: 10,
-  //   minZoom: 8
-  // }
+  ,
+  {
+    id: 'rotterdam',
+    name: 'Rotterdam',
+    country: 'Netherlands',
+    longitude: 4.47917,
+    latitude: 51.9225,
+    zoom: 10,
+    minZoom: 8
+  }
 ];
 
 export default cities; 

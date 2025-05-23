@@ -43,7 +43,7 @@ const CitySelector: React.FC<CitySelectorProps> = ({ onCitySelect, initialCityId
           id="city-select"
           value={selectedCityId}
           onChange={handleCityChange}
-          className="appearance-none bg-gray-700 text-white text-sm rounded-lg block w-48 px-3 py-2 pr-8
+          className="appearance-none bg-gray-700 text-white text-sm rounded-lg block w-64 px-3 py-2 pr-8
             border border-gray-600 hover:border-gray-500
             focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
             transition-all duration-200 ease-in-out

@@ -19,10 +19,10 @@ export default function DocsHomePage() {
         </p>
       </div>
 
+
       <div className="aspect-w-16 aspect-h-9 mb-10">
         <iframe
-          className="w-full rounded-xl"
-          height="500"
+          className="w-full rounded-xl h-[200px] md:h-[500px]"
           src="https://www.youtube.com/embed/_btkrR04_h4?si=1dVR4qrOH7fuRB1e"
           title="Project Overview"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -29,10 +29,10 @@ export default function DocsLayout({
                             <span className="sr-only">Toggle Menu</span>
                         </button>
                         <Link href="/docs" className="flex items-center space-x-2">
-                            <Image 
-                                src="/logo-black.png" 
-                                alt="UHI Logo" 
-                                width={45} 
+                            <Image
+                                src="/logo-black.png"
+                                alt="UHI Logo"
+                                width={45}
                                 height={45}
                             />
                             <span className="font-semibold text-lg text-slate-800">Documentation</span>
@@ -85,7 +85,7 @@ export default function DocsLayout({
 
                     <main className="flex-1 min-w-0">
                         <div className="bg-white rounded-xl shadow-sm border-solid border-slate-200 overflow-hidden">
-                            <div className="px-6 py-6 sm:p-8 md:p-10">
+                            <div className="px-3 py-6 sm:p-8 md:p-10">
                                 <Suspense fallback={<div className="p-4 text-center">Loading content...</div>}>
                                     {children}
                                 </Suspense>
@@ -99,9 +99,9 @@ export default function DocsLayout({
                 <div className="container mx-auto px-3 sm:px-6 lg:px-8">
                     <div className="flex flex-col items-center gap-3 md:flex-row">
                         <div className="flex items-center justify-center gap-2 w-full">
-                            <Image 
-                                src="/logo-black.png" 
-                                alt="UHI Logo" 
+                            <Image
+                                src="/logo-black.png"
+                                alt="UHI Logo"
                                 width={32}
                                 height={32}
                                 className="w-6 h-6 sm:w-8 sm:h-8"

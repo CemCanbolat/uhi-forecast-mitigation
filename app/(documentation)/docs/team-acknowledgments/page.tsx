@@ -64,7 +64,7 @@ export default function TeamAcknowledgmentsPage() {
           We would like to express our gratitude to the many individuals and organizations that supported this project:
         </p>
 
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 mb-6">
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 mb-6">
           <ul className="list-disc pl-6 space-y-2 text-slate-700">
             <li>
               <span className="font-semibold">Prof. Dr. Ferdi SÖNMEZ</span> - For his guidance and mentorship

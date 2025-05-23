@@ -174,10 +174,10 @@ export default function UHIMap({
   // Zoom level indicator component
   const ZoomIndicator = () => (
     <div className="absolute top-3 left-3 z-10">
-      <div className="bg-white/90 dark:bg-gray-700/90 p-1 sm:p-2 rounded-md shadow-sm text-[10px] sm:text-xs">
+      <div className="bg-white/90 dark:bg-gray-700/90 p-3 sm:p-4 rounded-lg shadow-lg text-sm sm:text-base">
         {viewState.zoom < MIN_POPUP_ZOOM ? (
           <div className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <span className="hidden sm:inline">Zoom in fully to see mitigation actions</span>
@@ -185,7 +185,7 @@ export default function UHIMap({
           </div>
         ) : (
           <div className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             <span className="hidden sm:inline">Click on hotspots to see actions</span>
