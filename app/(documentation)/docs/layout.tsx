@@ -44,7 +44,7 @@ export default function DocsLayout({
                             <span className="hidden md:inline">Back to Home</span>
                         </Link>
                         <Link
-                            href="https://github.com"
+                            href="https://github.com/CemCanbolat/uhi-forecast-mitigation"
                             target="_blank"
                             rel="noreferrer"
                             className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 border-solid border-slate-300 rounded-md hover:bg-slate-100 transition-colors"
