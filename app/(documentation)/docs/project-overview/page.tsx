@@ -10,12 +10,6 @@ export default function ProjectOverviewPage() {
                 <h2 id="abstract" className="text-2xl font-semibold text-slate-800 mb-4">Abstract</h2>
                 <p className="text-slate-700 mb-4 leading-relaxed">
                     Densely built urban areas experience significantly higher temperatures than surrounding rural areas, a phenomenon known as the Urban Heat Island (UHI) effect. This exacerbates heat stress, negatively impacts public health, increases energy consumption, and contributes to broader climate change challenges. Current efforts often focus on UHI detection rather than proactive prediction. This project proposes an AI-powered system to predict UHIs 5 days in advance, analyze satellite imagery and climate data to generate heat risk maps, and recommend actionable mitigation strategies. The system aims to empower individuals, communities, and city planners with tools for informed decision-making, fostering energy conservation, enhancing urban livability, and supporting climate adaptation, aligning with SDG 11 (Sustainable Cities and Communities), SDG 3 (Good Health and Well-Being), and SDG 13 (Climate Action).
-                    Goals and Objectives
-                    Our project aims to achieve the following specific goals:
-                    Develop an AI model to predict Urban Heat Islands (UHIs) using CNN-LSTM hybrid architecture
-                    Design an AI agent to propose context-specific mitigation actions for reducing UHIs
-                    Create an accessible web application for visualizing UHI predictions and mitigation measures
-                    Provide data-driven insights to increase awareness of UHI effects
                 </p>
             </section>
 
