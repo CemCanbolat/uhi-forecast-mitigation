@@ -174,7 +174,7 @@ export default function UHIMap({
   // Zoom level indicator component
   const ZoomIndicator = () => (
     <div className="absolute top-3 left-3 z-10">
-      <div className="bg-white/90 dark:bg-gray-700/90 p-3 sm:p-4 rounded-lg shadow-lg text-sm sm:text-base">
+      <div className="bg-gray-700/90 p-3 sm:p-4 rounded-lg shadow-lg text-sm sm:text-base">
         {viewState.zoom < MIN_POPUP_ZOOM ? (
           <div className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -295,7 +295,7 @@ export default function UHIMap({
 
   const NoDataOverlay = () => {
     if (!heatIslandData || heatIslandData.features?.length > 0) return null;
-    
+
     return (
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
         <div className="bg-gray-900/80 rounded-lg p-4 backdrop-blur-sm max-w-md mx-4">
